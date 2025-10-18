@@ -10,6 +10,13 @@ const topCreators = [
   { name: "AlphaTrader", volume: "87.3K", accuracy: "79%", rank: 4, change: "-3%" },
 ];
 
+const creatorEarnings = [
+  { name: "CryptoKing", earnings: "142.3", rank: 1, medal: "🥇" },
+  { name: "MarketMaven", earnings: "119.4", rank: 2, medal: "🥈" },
+  { name: "TruthSeeker", earnings: "98.2", rank: 3, medal: "🥉" },
+  { name: "AlphaTrader", earnings: "76.5", rank: 4, medal: "" },
+];
+
 const recentMarkets = [
   { title: "Will ETH hit $5k in 2025?", time: "2m ago" },
   { title: "US Election Prediction", time: "5m ago" },
@@ -18,13 +25,13 @@ const recentMarkets = [
 ];
 
 const RightSidebar = () => {
-  const [activeTab, setActiveTab] = useState<"leaderboard" | "recent">("leaderboard");
+  const [activeTab, setActiveTab] = useState<"leaderboard" | "recent" | "earnings">("leaderboard");
 
   return (
     <aside className="w-80">
       <Card className="glass p-4 border-border/50">
         {/* Tabs */}
-        <div className="flex gap-2 mb-4 border-b border-border pb-2">
+        <div className="flex gap-2 mb-4">
           <button
             onClick={() => setActiveTab("leaderboard")}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium smooth ${
@@ -35,6 +42,17 @@ const RightSidebar = () => {
           >
             <Crown className="w-4 h-4" />
             Leaderboard
+          </button>
+          <button
+            onClick={() => setActiveTab("earnings")}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium smooth ${
+              activeTab === "earnings"
+                ? "bg-gradient-to-r from-primary/15 to-primary/10 text-primary ring-1 ring-primary/20"
+                : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
+            }`}
+          >
+            <TrendingUp className="w-4 h-4" />
+            Earnings
           </button>
           <button
             onClick={() => setActiveTab("recent")}
@@ -50,7 +68,42 @@ const RightSidebar = () => {
         </div>
 
         {/* Tab Content */}
-        {activeTab === "leaderboard" ? (
+        {activeTab === "earnings" ? (
+          <div className="space-y-3">
+            <div className="mb-3">
+              <h4 className="text-sm font-semibold text-foreground mb-1">
+                Creator Earnings — 1% Volume Bonus
+              </h4>
+              <p className="text-xs text-[#A0A7B2]">
+                Top creators by bonus earnings in the past 24 hours.
+              </p>
+            </div>
+            {creatorEarnings.map((creator) => (
+              <div
+                key={creator.rank}
+                className="flex items-center gap-3 p-3 rounded-xl hover:bg-accent/30 smooth"
+              >
+                <div className="text-2xl">{creator.medal || "•"}</div>
+                <Avatar className="w-9 h-9 ring-2 ring-primary/30 ring-offset-2 ring-offset-background">
+                  <AvatarFallback className="bg-gradient-to-br from-primary to-primary-glow text-white text-xs font-semibold">
+                    {creator.name.substring(0, 2)}
+                  </AvatarFallback>
+                </Avatar>
+                <div className="flex-1 min-w-0">
+                  <span className="font-semibold text-sm text-[#0E0E0E] truncate block">
+                    {creator.name}
+                  </span>
+                  <div className="text-xs text-[#A0A7B2]">
+                    Rank #{creator.rank}
+                  </div>
+                </div>
+                <div className="text-sm font-bold" style={{ color: '#00C2FF' }}>
+                  {creator.earnings} SOL
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : activeTab === "leaderboard" ? (
           <div className="space-y-2">
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-semibold text-muted-foreground">24h Volume</span>
@@ -74,19 +127,19 @@ const RightSidebar = () => {
                   )}
                 </div>
 
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2">
-                    <span className="font-semibold text-sm text-foreground truncate">
-                      {creator.name}
-                    </span>
-                    <span className={`text-xs ${creator.change.startsWith('+') ? 'text-success' : 'text-destructive'}`}>
-                      {creator.change.startsWith('+') ? '↗' : '↘'} {creator.change}
-                    </span>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2">
+                      <span className="font-semibold text-sm text-[#0E0E0E] truncate">
+                        {creator.name}
+                      </span>
+                      <span className={`text-xs ${creator.change.startsWith('+') ? 'text-success' : 'text-destructive'}`}>
+                        {creator.change.startsWith('+') ? '↗' : '↘'} {creator.change}
+                      </span>
+                    </div>
+                    <div className="text-xs text-[#A0A7B2]">
+                      {creator.accuracy} accuracy
+                    </div>
                   </div>
-                  <div className="text-xs text-muted-foreground">
-                    {creator.accuracy} accuracy
-                  </div>
-                </div>
 
                 <div className="text-right">
                   <div className="text-sm font-bold text-primary">{creator.volume}</div>

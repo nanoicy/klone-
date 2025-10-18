@@ -1,7 +1,9 @@
 import TopBar from "@/components/TopBar";
-import FilterSidebar from "@/components/FilterSidebar";
+import HorizontalFilterBar from "@/components/HorizontalFilterBar";
 import MarketCard from "@/components/MarketCard";
 import RightSidebar from "@/components/RightSidebar";
+import MetricsStrip from "@/components/MetricsStrip";
+import FloatingCreateButton from "@/components/FloatingCreateButton";
 
 const mockMarkets = [
   {
@@ -52,34 +54,35 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-[#FAFAFC] to-background">
       <TopBar />
+      <HorizontalFilterBar />
       
-      <main className="container mx-auto px-6 pt-24 pb-12">
-        <div className="flex gap-5">
-          {/* Left Filter Sidebar */}
-          <FilterSidebar />
+      <main className="container mx-auto px-6 pt-6 pb-12">
+        {/* Metrics Strip */}
+        <MetricsStrip />
 
+        <div className="flex gap-5">
           {/* Main Market Feed */}
           <div className="flex-1 space-y-6">
             {/* Hero Section */}
-            <div className="glass rounded-2xl p-5 border-border/50 mb-8 relative overflow-hidden">
-              <h1 className="text-3xl font-bold mb-2 text-foreground">
+            <div className="glass rounded-2xl p-4 border-border/50 mb-6 relative overflow-hidden">
+              <h1 className="text-2xl font-bold mb-1 text-foreground">
                 Trade What You Believe.
               </h1>
-              <p className="text-base text-muted-foreground mb-5 max-w-2xl">
+              <p className="text-sm text-muted-foreground mb-4 max-w-2xl">
                 Predict outcomes, earn rewards, and verify truth on Solana.
               </p>
               <div className="flex items-center gap-4">
-                <button className="px-6 py-3 bg-primary text-white rounded-xl font-semibold hover-glow smooth hover:-translate-y-0.5">
+                <button className="px-5 py-2.5 bg-primary text-white rounded-xl font-semibold hover-glow smooth hover:-translate-y-0.5 text-sm">
                   Create Market
                 </button>
-                <a href="#" className="text-sm text-muted-foreground hover:text-primary smooth underline-offset-4 hover:underline">
+                <a href="#" className="text-xs text-muted-foreground hover:text-primary smooth underline-offset-4 hover:underline">
                   How it Works
                 </a>
               </div>
             </div>
 
             {/* Market Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-5">
               {mockMarkets.map((market, i) => (
                 <MarketCard key={i} {...market} />
               ))}
@@ -87,7 +90,7 @@ const Index = () => {
 
             {/* Load More */}
             <div className="flex justify-center pt-6">
-              <button className="px-8 py-3 glass rounded-xl font-semibold hover:bg-accent/50 smooth border border-primary/20 hover:border-primary">
+              <button className="px-8 py-3 glass rounded-xl font-semibold hover:bg-accent/50 smooth border border-primary/20 hover:border-primary text-sm">
                 Load More Markets
               </button>
             </div>
@@ -97,6 +100,9 @@ const Index = () => {
           <RightSidebar />
         </div>
       </main>
+
+      {/* Floating Create Button */}
+      <FloatingCreateButton />
     </div>
   );
 };

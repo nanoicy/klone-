@@ -26,14 +26,14 @@ All colors MUST be HSL.
     --primary-glow: 192 100% 70%;
     
     /* Semantic colors for prediction outcomes */
-    --success: 142 76% 58%;  /* Soft mint green #4ADE80 */
+    --success: 162 100% 23%;  /* Rich green #007458 */
     --success-foreground: 0 0% 100%;
-    --success-glow: 142 76% 65%;
+    --success-glow: 162 100% 30%;
     
     /* Soft Red for NO/Sell */
-    --destructive: 0 72% 70%;  /* Lighter, softer red #FCA5A5 */
+    --destructive: 349 92% 45%;  /* Vivid red #de0a26 */
     --destructive-foreground: 0 0% 100%;
-    --destructive-glow: 0 72% 75%;
+    --destructive-glow: 349 92% 52%;
 
     /* Secondary - Frost highlights */
     --secondary: 210 40% 96%;
@@ -135,7 +135,7 @@ All colors MUST be HSL.
   /* Glassmorphism effects */
   .glass {
     @apply backdrop-blur-xl bg-white/90 border border-gray-200/50;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
   }
   
   .glass-dark {
@@ -156,10 +156,11 @@ All colors MUST be HSL.
     @apply transition-all duration-300;
   }
   
-  .hover-lift:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08), 0 0 20px rgba(70, 232, 255, 0.15);
-  }
+.hover-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  border-color: rgba(0, 194, 255, 0.3);
+}
 
   .hover-glow {
     @apply transition-all duration-300 hover:shadow-[0_0_15px_rgba(70,232,255,0.25)];
