@@ -1,7 +1,6 @@
 import { Card } from "@/components/ui/card";
-import { Crown, TrendingUp, Clock } from "lucide-react";
+import { Crown } from "lucide-react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { useState } from "react";
 
 const topCreators = [
   { name: "CryptoKing", volume: "145.2K", accuracy: "87%", rank: 1, change: "+12%" },
@@ -17,155 +16,93 @@ const creatorEarnings = [
   { name: "AlphaTrader", earnings: "76.5", rank: 4, medal: "" },
 ];
 
-const recentMarkets = [
-  { title: "Will ETH hit $5k in 2025?", time: "2m ago" },
-  { title: "US Election Prediction", time: "5m ago" },
-  { title: "Super Bowl Winner 2025", time: "8m ago" },
-  { title: "Next Fed Rate Decision", time: "12m ago" },
-];
-
 const RightSidebar = () => {
-  const [activeTab, setActiveTab] = useState<"leaderboard" | "recent" | "earnings">("leaderboard");
-
   return (
-    <aside className="w-80">
+    <aside className="w-80 space-y-5">
+      {/* Card 1: Top Creators Leaderboard */}
       <Card className="glass p-4 border-border/50">
-        {/* Tabs */}
-        <div className="flex gap-2 mb-4">
-          <button
-            onClick={() => setActiveTab("leaderboard")}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium smooth ${
-              activeTab === "leaderboard"
-                ? "bg-gradient-to-r from-primary/15 to-primary/10 text-primary ring-1 ring-primary/20"
-                : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
-            }`}
-          >
-            <Crown className="w-4 h-4" />
-            Leaderboard
-          </button>
-          <button
-            onClick={() => setActiveTab("earnings")}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium smooth ${
-              activeTab === "earnings"
-                ? "bg-gradient-to-r from-primary/15 to-primary/10 text-primary ring-1 ring-primary/20"
-                : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
-            }`}
-          >
-            <TrendingUp className="w-4 h-4" />
-            Earnings
-          </button>
-          <button
-            onClick={() => setActiveTab("recent")}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium smooth ${
-              activeTab === "recent"
-                ? "bg-gradient-to-r from-primary/15 to-primary/10 text-primary ring-1 ring-primary/20"
-                : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
-            }`}
-          >
-            <Clock className="w-4 h-4" />
-            Recent
-          </button>
+        <div className="flex items-center justify-between mb-3">
+          <h4 className="text-sm font-semibold text-foreground">Top Creators</h4>
+          <a href="#" className="text-xs text-primary hover:underline">View All</a>
         </div>
-
-        {/* Tab Content */}
-        {activeTab === "earnings" ? (
-          <div className="space-y-3">
-            <div className="mb-3">
-              <h4 className="text-sm font-semibold text-foreground mb-1">
-                Creator Earnings — 1% Volume Bonus
-              </h4>
-              <p className="text-xs text-[#A0A7B2]">
-                Top creators by bonus earnings in the past 24 hours.
-              </p>
-            </div>
-            {creatorEarnings.map((creator) => (
-              <div
-                key={creator.rank}
-                className="flex items-center gap-3 p-3 rounded-xl hover:bg-accent/30 smooth"
-              >
-                <div className="text-2xl">{creator.medal || "•"}</div>
+        <div className="space-y-2">
+          {topCreators.map((creator) => (
+            <div
+              key={creator.name}
+              className="flex items-center gap-3 p-2 rounded-lg hover:bg-accent/50 smooth cursor-pointer"
+            >
+              <div className="relative">
                 <Avatar className="w-9 h-9 ring-2 ring-primary/30 ring-offset-2 ring-offset-background">
                   <AvatarFallback className="bg-gradient-to-br from-primary to-primary-glow text-white text-xs font-semibold">
                     {creator.name.substring(0, 2)}
                   </AvatarFallback>
                 </Avatar>
-                <div className="flex-1 min-w-0">
-                  <span className="font-semibold text-sm text-[#0E0E0E] truncate block">
+                {creator.rank === 1 && (
+                  <div className="absolute -top-1 -right-1 w-4 h-4 bg-yellow-500 rounded-full flex items-center justify-center">
+                    <Crown className="w-2.5 h-2.5 text-white" />
+                  </div>
+                )}
+              </div>
+
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2">
+                  <span className="font-semibold text-sm text-[#0E0E0E] truncate">
                     {creator.name}
                   </span>
-                  <div className="text-xs text-[#A0A7B2]">
-                    Rank #{creator.rank}
-                  </div>
+                  <span className={`text-xs ${creator.change.startsWith('+') ? 'text-success' : 'text-destructive'}`}>
+                    {creator.change.startsWith('+') ? '↗' : '↘'} {creator.change}
+                  </span>
                 </div>
-                <div className="text-sm font-bold" style={{ color: '#00C2FF' }}>
-                  {creator.earnings} SOL
+                <div className="text-xs text-[#A0A7B2]">
+                  {creator.accuracy} accuracy
                 </div>
               </div>
-            ))}
-          </div>
-        ) : activeTab === "leaderboard" ? (
-          <div className="space-y-2">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-semibold text-muted-foreground">24h Volume</span>
-              <a href="#" className="text-xs text-primary hover:underline">View All</a>
+
+              <div className="text-right">
+                <div className="text-sm font-bold text-primary">{creator.volume}</div>
+                <div className="text-xs text-muted-foreground">SOL</div>
+              </div>
             </div>
-            {topCreators.map((creator) => (
-              <div
-                key={creator.name}
-                className="flex items-center gap-3 p-2 rounded-lg hover:bg-accent/50 smooth cursor-pointer"
-              >
-                <div className="relative">
-                  <Avatar className="w-9 h-9 ring-2 ring-primary/30 ring-offset-2 ring-offset-background">
-                    <AvatarFallback className="bg-gradient-to-br from-primary to-primary-glow text-white text-xs font-semibold">
-                      {creator.name.substring(0, 2)}
-                    </AvatarFallback>
-                  </Avatar>
-                  {creator.rank === 1 && (
-                    <div className="absolute -top-1 -right-1 w-4 h-4 bg-yellow-500 rounded-full flex items-center justify-center">
-                      <Crown className="w-2.5 h-2.5 text-white" />
-                    </div>
-                  )}
-                </div>
+          ))}
+        </div>
+      </Card>
 
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2">
-                      <span className="font-semibold text-sm text-[#0E0E0E] truncate">
-                        {creator.name}
-                      </span>
-                      <span className={`text-xs ${creator.change.startsWith('+') ? 'text-success' : 'text-destructive'}`}>
-                        {creator.change.startsWith('+') ? '↗' : '↘'} {creator.change}
-                      </span>
-                    </div>
-                    <div className="text-xs text-[#A0A7B2]">
-                      {creator.accuracy} accuracy
-                    </div>
-                  </div>
-
-                <div className="text-right">
-                  <div className="text-sm font-bold text-primary">{creator.volume}</div>
-                  <div className="text-xs text-muted-foreground">SOL</div>
+      {/* Card 2: Creator Earnings */}
+      <Card className="glass p-4 border-border/50">
+        <div className="mb-3">
+          <h4 className="text-xs font-medium text-primary/80 uppercase tracking-wider mb-1">
+            1% Creator Earnings
+          </h4>
+          <p className="text-xs text-muted-foreground">
+            Top creators by bonus earnings in the past 24 hours.
+          </p>
+        </div>
+        <div className="space-y-3">
+          {creatorEarnings.map((creator) => (
+            <div
+              key={creator.rank}
+              className="flex items-center gap-3 p-3 rounded-xl hover:bg-accent/30 smooth"
+            >
+              <div className="text-2xl">{creator.medal || "•"}</div>
+              <Avatar className="w-9 h-9 ring-2 ring-primary/30 ring-offset-2 ring-offset-background">
+                <AvatarFallback className="bg-gradient-to-br from-primary to-primary-glow text-white text-xs font-semibold">
+                  {creator.name.substring(0, 2)}
+                </AvatarFallback>
+              </Avatar>
+              <div className="flex-1 min-w-0">
+                <span className="font-semibold text-sm text-[#0E0E0E] truncate block">
+                  {creator.name}
+                </span>
+                <div className="text-xs text-[#A0A7B2]">
+                  Rank #{creator.rank}
                 </div>
               </div>
-            ))}
-          </div>
-        ) : (
-          <div className="space-y-2">
-            {recentMarkets.map((market, i) => (
-              <div
-                key={i}
-                className="p-2 rounded-lg hover:bg-accent/50 smooth cursor-pointer"
-              >
-                <p className="text-sm font-medium text-foreground mb-1 line-clamp-2">
-                  {market.title}
-                </p>
-                <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                  <TrendingUp className="w-3 h-3" />
-                  <span>{market.time}</span>
-                </div>
+              <div className="text-sm font-bold" style={{ color: '#00C2FF' }}>
+                {creator.earnings} SOL
               </div>
-            ))}
-          </div>
-        )}
+            </div>
+          ))}
+        </div>
       </Card>
     </aside>
   );

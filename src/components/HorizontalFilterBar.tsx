@@ -19,8 +19,9 @@ const HorizontalFilterBar = () => {
 
   return (
     <div className="sticky top-[72px] z-40 glass border-b border-border/50 backdrop-blur-xl">
-      <div className="container mx-auto px-6 py-3">
-        <div className="flex items-center justify-center gap-6 overflow-x-auto scrollbar-hide">
+      <div className="container mx-auto px-6 py-4">
+        <div className="flex items-center justify-center overflow-x-auto scrollbar-hide">
+          <div className="glass rounded-full px-6 py-2.5 inline-flex items-center gap-6 border border-border/30">
           {/* Sort Filters */}
           <div className="flex items-center gap-2">
             {sortFilters.map((filter) => (
@@ -43,10 +44,10 @@ const HorizontalFilterBar = () => {
             ))}
           </div>
 
-          {/* Divider */}
-          <div className="h-6 w-px bg-border/50" />
+            {/* Divider */}
+            <div className="h-6 w-px bg-border/50" />
 
-          {/* Category Filters */}
+            {/* Category Filters */}
           <div className="flex items-center gap-2">
             {categoryFilters.map((filter) => (
               <Button
@@ -67,6 +68,7 @@ const HorizontalFilterBar = () => {
               </Button>
             ))}
           </div>
+        </div>
         </div>
       </div>
     </div>

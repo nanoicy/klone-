@@ -3,10 +3,10 @@ import { Wallet, User } from "lucide-react";
 
 const TopBar = () => {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 glass border-b border-border/50 backdrop-blur-xl">
-      <div className="container mx-auto px-6 h-18 flex items-center justify-between">
+    <header className="fixed top-0 left-0 right-0 z-50 glass border-b border-border/50 backdrop-blur-xl shadow-sm">
+      <div className="container mx-auto px-6 h-18 flex items-baseline justify-between">
         {/* Logo */}
-        <div className="flex items-center gap-8">
+        <div className="flex items-baseline gap-8">
           <a 
             href="/" 
             className="text-xl font-semibold text-[#111111] hover:underline underline-offset-4 decoration-primary/50 smooth tracking-wide"
@@ -16,7 +16,7 @@ const TopBar = () => {
           </a>
 
           {/* Navigation Tabs */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden md:flex items-baseline gap-1">
             <Button variant="ghost" className="text-foreground hover:text-primary">
               Markets
             </Button>

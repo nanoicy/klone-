@@ -48,6 +48,20 @@ const mockMarkets = [
     volume: "11.7K",
     endDate: "Mar 31, 2025",
   },
+  {
+    title: "Will Apple release AR glasses in 2025?",
+    yesOdds: 38,
+    noOdds: 62,
+    volume: "7.1K",
+    endDate: "Dec 31, 2025",
+  },
+  {
+    title: "Will Dogecoin reach $1 in 2025?",
+    yesOdds: 22,
+    noOdds: 78,
+    volume: "31.2K",
+    endDate: "Dec 31, 2025",
+  },
 ];
 
 const Index = () => {
@@ -60,19 +74,19 @@ const Index = () => {
         {/* Metrics Strip */}
         <MetricsStrip />
 
-        <div className="flex gap-5">
+        <div className="flex gap-5 mt-8">
           {/* Main Market Feed */}
           <div className="flex-1 space-y-6">
             {/* Hero Section */}
-            <div className="glass rounded-2xl p-4 border-border/50 mb-6 relative overflow-hidden">
-              <h1 className="text-2xl font-bold mb-1 text-foreground">
+            <div className="glass rounded-2xl p-3.5 border-border/50 mb-12 relative overflow-hidden">
+              <h1 className="text-xl font-bold mb-1 text-foreground">
                 Trade What You Believe.
               </h1>
-              <p className="text-sm text-muted-foreground mb-4 max-w-2xl">
+              <p className="text-sm text-muted-foreground mb-3.5 max-w-2xl">
                 Predict outcomes, earn rewards, and verify truth on Solana.
               </p>
               <div className="flex items-center gap-4">
-                <button className="px-5 py-2.5 bg-primary text-white rounded-xl font-semibold hover-glow smooth hover:-translate-y-0.5 text-sm">
+                <button className="px-4 py-2 bg-primary text-white rounded-xl font-semibold hover-glow smooth hover:-translate-y-0.5 text-sm">
                   Create Market
                 </button>
                 <a href="#" className="text-xs text-muted-foreground hover:text-primary smooth underline-offset-4 hover:underline">
@@ -82,7 +96,7 @@ const Index = () => {
             </div>
 
             {/* Market Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 mb-12">
               {mockMarkets.map((market, i) => (
                 <MarketCard key={i} {...market} />
               ))}
@@ -90,7 +104,7 @@ const Index = () => {
 
             {/* Load More */}
             <div className="flex justify-center pt-6">
-              <button className="px-8 py-3 glass rounded-xl font-semibold hover:bg-accent/50 smooth border border-primary/20 hover:border-primary text-sm">
+              <button className="px-10 py-3.5 rounded-full font-semibold text-sm smooth bg-gradient-to-r from-[#E6F8FF] to-[#DFF9F9] text-success hover:shadow-[0_8px_24px_rgba(0,116,88,0.15)] hover:-translate-y-1 border border-success/20">
                 Load More Markets
               </button>
             </div>
