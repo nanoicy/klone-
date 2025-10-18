@@ -4,10 +4,10 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { useState } from "react";
 
 const topCreators = [
-  { name: "CryptoKing", volume: "145.2K", accuracy: "87%", rank: 1 },
-  { name: "MarketMaven", volume: "132.8K", accuracy: "84%", rank: 2 },
-  { name: "TruthSeeker", volume: "98.5K", accuracy: "91%", rank: 3 },
-  { name: "AlphaTrader", volume: "87.3K", accuracy: "79%", rank: 4 },
+  { name: "CryptoKing", volume: "145.2K", accuracy: "87%", rank: 1, change: "+12%" },
+  { name: "MarketMaven", volume: "132.8K", accuracy: "84%", rank: 2, change: "+8%" },
+  { name: "TruthSeeker", volume: "98.5K", accuracy: "91%", rank: 3, change: "+15%" },
+  { name: "AlphaTrader", volume: "87.3K", accuracy: "79%", rank: 4, change: "-3%" },
 ];
 
 const recentMarkets = [
@@ -29,7 +29,7 @@ const RightSidebar = () => {
             onClick={() => setActiveTab("leaderboard")}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium smooth ${
               activeTab === "leaderboard"
-                ? "bg-primary/10 text-primary"
+                ? "bg-gradient-to-r from-primary/15 to-primary/10 text-primary ring-1 ring-primary/20"
                 : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
             }`}
           >
@@ -40,7 +40,7 @@ const RightSidebar = () => {
             onClick={() => setActiveTab("recent")}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium smooth ${
               activeTab === "recent"
-                ? "bg-primary/10 text-primary"
+                ? "bg-gradient-to-r from-primary/15 to-primary/10 text-primary ring-1 ring-primary/20"
                 : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
             }`}
           >
@@ -62,7 +62,7 @@ const RightSidebar = () => {
                 className="flex items-center gap-3 p-2 rounded-lg hover:bg-accent/50 smooth cursor-pointer"
               >
                 <div className="relative">
-                  <Avatar className="w-9 h-9 border-2 border-primary/20">
+                  <Avatar className="w-9 h-9 ring-2 ring-primary/30 ring-offset-2 ring-offset-background">
                     <AvatarFallback className="bg-gradient-to-br from-primary to-primary-glow text-white text-xs font-semibold">
                       {creator.name.substring(0, 2)}
                     </AvatarFallback>
@@ -75,8 +75,13 @@ const RightSidebar = () => {
                 </div>
 
                 <div className="flex-1 min-w-0">
-                  <div className="font-semibold text-sm text-foreground truncate">
-                    {creator.name}
+                  <div className="flex items-center gap-2">
+                    <span className="font-semibold text-sm text-foreground truncate">
+                      {creator.name}
+                    </span>
+                    <span className={`text-xs ${creator.change.startsWith('+') ? 'text-success' : 'text-destructive'}`}>
+                      {creator.change.startsWith('+') ? '↗' : '↘'} {creator.change}
+                    </span>
                   </div>
                   <div className="text-xs text-muted-foreground">
                     {creator.accuracy} accuracy

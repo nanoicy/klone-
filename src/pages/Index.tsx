@@ -61,11 +61,11 @@ const Index = () => {
           {/* Main Market Feed */}
           <div className="flex-1 space-y-6">
             {/* Hero Section */}
-            <div className="glass rounded-2xl p-6 border-border/50 mb-10 relative overflow-hidden">
-              <h1 className="text-3xl font-bold mb-3 text-foreground">
+            <div className="glass rounded-2xl p-5 border-border/50 mb-8 relative overflow-hidden">
+              <h1 className="text-3xl font-bold mb-2 text-foreground">
                 Trade What You Believe.
               </h1>
-              <p className="text-base text-muted-foreground mb-6 max-w-2xl">
+              <p className="text-base text-muted-foreground mb-5 max-w-2xl">
                 Predict outcomes, earn rewards, and verify truth on Solana.
               </p>
               <div className="flex items-center gap-4">

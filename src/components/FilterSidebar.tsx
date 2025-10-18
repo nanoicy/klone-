@@ -20,17 +20,17 @@ const FilterSidebar = () => {
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <Input 
             placeholder="Search markets..." 
-            className="pl-9 bg-background/50 border-border focus:border-primary smooth"
+            className="pl-9 bg-white/40 backdrop-blur-sm border-border focus:border-primary smooth"
           />
         </div>
 
         {/* Sort By Section */}
         <div className="mb-4 pb-4 border-b border-border">
-          <h3 className="text-xs font-semibold mb-2 text-muted-foreground uppercase tracking-wide">Sort By</h3>
+          <h3 className="text-[10px] font-medium mb-2 text-muted-foreground/70 uppercase tracking-widest">Sort By</h3>
           <div className="space-y-1">
             <Button 
               variant="ghost" 
-              className="w-full justify-start h-8 text-sm text-primary bg-primary/5 hover:bg-primary/10 font-medium"
+              className="w-full justify-start h-8 text-sm text-primary font-medium relative after:absolute after:bottom-0 after:left-2 after:right-2 after:h-0.5 after:bg-gradient-to-r after:from-primary after:to-primary-glow after:rounded-full pulse-neon"
             >
               <Zap className="w-3.5 h-3.5 mr-2" />
               Trending
@@ -61,7 +61,7 @@ const FilterSidebar = () => {
 
         {/* Categories Section */}
         <div>
-          <h3 className="text-xs font-semibold mb-2 text-muted-foreground uppercase tracking-wide">Categories</h3>
+          <h3 className="text-[10px] font-medium mb-2 text-muted-foreground/70 uppercase tracking-widest">Categories</h3>
           <div className="space-y-1">
             {categories.map((cat) => (
               <Button

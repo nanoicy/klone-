@@ -23,7 +23,7 @@ const MarketCard = ({
     <Card className="glass p-4 hover-lift cursor-pointer group border-border/50">
       {/* Line 1: Title + Share */}
       <div className="flex items-start justify-between mb-3">
-        <h3 className="text-base font-semibold text-foreground group-hover:text-primary smooth flex-1 pr-3 line-clamp-2">
+        <h3 className="text-base font-bold text-foreground group-hover:text-primary smooth flex-1 pr-3 line-clamp-2">
           {title}
         </h3>
         <Button 
@@ -35,11 +35,11 @@ const MarketCard = ({
         </Button>
       </div>
 
-      {/* Line 2: Horizontal Probability Bar */}
-      <div className="mb-3 relative h-12 rounded-xl overflow-hidden bg-gradient-to-r from-primary/10 to-destructive/10">
-        {/* YES side gradient */}
+      {/* Line 2: Horizontal Probability Bar with semantic colors */}
+      <div className="mb-3 relative h-12 rounded-xl overflow-hidden bg-gradient-to-r from-success/10 to-destructive/10">
+        {/* YES side - green gradient */}
         <div 
-          className="absolute left-0 top-0 h-full bg-gradient-to-r from-primary to-primary/70 transition-all duration-300"
+          className="absolute left-0 top-0 h-full bg-gradient-to-r from-success to-success/70 transition-all duration-500"
           style={{ width: `${yesOdds}%` }}
         />
         
@@ -54,21 +54,19 @@ const MarketCard = ({
         </div>
       </div>
 
-      {/* Line 3: Meta info row */}
-      <div className="flex items-center justify-between text-xs text-muted-foreground mb-3">
-        <div className="flex items-center gap-1.5">
-          <TrendingUp className="w-3 h-3" />
-          <span className="font-medium">{volume} SOL</span>
-        </div>
-        <div className="flex items-center gap-1.5">
-          <Clock className="w-3 h-3" />
-          <span>{endDate}</span>
-        </div>
+      {/* Line 3: Compact meta info */}
+      <div className="flex items-center text-xs text-[#AEB6C2] mb-3 font-medium">
+        <TrendingUp className="w-3 h-3 mr-1" />
+        <span>{volume} SOL</span>
+        <span className="mx-2">·</span>
+        <Clock className="w-3 h-3 mr-1" />
+        <span>{endDate}</span>
       </div>
 
-      {/* Single Trade Button */}
+      {/* Single Trade Button - outline style */}
       <Button 
-        className="w-full bg-primary hover:bg-primary/90 text-white font-medium hover-glow"
+        variant="outline"
+        className="w-full border-primary/30 text-primary hover:bg-primary hover:text-white font-medium smooth group-hover:bg-primary group-hover:text-white group-hover:border-primary"
       >
         Trade
       </Button>
