@@ -126,7 +126,7 @@ All colors MUST be HSL.
 @layer utilities {
   /* Glassmorphism effects */
   .glass {
-    @apply backdrop-blur-xl bg-white/80 border border-white/20;
+    @apply backdrop-blur-xl bg-white/90 border border-gray-200/50;
   }
   
   .glass-dark {
@@ -135,24 +135,29 @@ All colors MUST be HSL.
 
   /* Glow effects */
   .glow-primary {
-    box-shadow: 0 0 20px rgba(70, 232, 255, 0.3);
+    box-shadow: 0 0 15px rgba(70, 232, 255, 0.25);
   }
 
   .glow-destructive {
-    box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.25);
   }
 
   /* Hover animations */
   .hover-lift {
-    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
+    @apply transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg;
   }
 
   .hover-glow {
-    @apply transition-all duration-300 hover:shadow-[0_0_20px_rgba(70,232,255,0.4)];
+    @apply transition-all duration-300 hover:shadow-[0_0_15px_rgba(70,232,255,0.25)];
   }
 
   /* Smooth transitions */
   .smooth {
     transition: var(--transition-smooth);
+  }
+
+  /* Inactive state */
+  .text-inactive {
+    @apply text-gray-500;
   }
 }

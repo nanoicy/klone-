@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { TrendingUp, Share2, MessageCircle, Clock } from "lucide-react";
+import { Share2, TrendingUp, Clock } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
 interface MarketCardProps {
@@ -20,84 +20,58 @@ const MarketCard = ({
   trend = "stable" 
 }: MarketCardProps) => {
   return (
-    <Card className="glass p-6 hover-lift cursor-pointer group border-border/50">
-      {/* Header */}
-      <div className="flex items-start justify-between mb-4">
-        <h3 className="text-lg font-semibold text-foreground group-hover:text-primary smooth flex-1 pr-4">
+    <Card className="glass p-4 hover-lift cursor-pointer group border-border/50">
+      {/* Line 1: Title + Share */}
+      <div className="flex items-start justify-between mb-3">
+        <h3 className="text-base font-semibold text-foreground group-hover:text-primary smooth flex-1 pr-3 line-clamp-2">
           {title}
         </h3>
         <Button 
           size="icon" 
           variant="ghost" 
-          className="opacity-0 group-hover:opacity-100 smooth hover:bg-primary/10"
+          className="opacity-0 group-hover:opacity-100 smooth hover:bg-primary/10 flex-shrink-0"
         >
           <Share2 className="w-4 h-4 text-primary" />
         </Button>
       </div>
 
-      {/* Odds Display */}
-      <div className="grid grid-cols-2 gap-3 mb-4">
-        <div className="glass rounded-xl p-3 border border-primary/20 hover:border-primary smooth">
-          <div className="text-xs text-muted-foreground mb-1">YES</div>
-          <div className="text-2xl font-bold text-primary">{yesOdds}%</div>
-        </div>
-        <div className="glass rounded-xl p-3 border border-destructive/20 hover:border-destructive smooth">
-          <div className="text-xs text-muted-foreground mb-1">NO</div>
-          <div className="text-2xl font-bold text-destructive">{noOdds}%</div>
-        </div>
-      </div>
-
-      {/* Mini Sparkline Placeholder */}
-      <div className="h-12 mb-4 rounded-lg bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 relative overflow-hidden">
-        <div className="absolute inset-0 flex items-end justify-around px-1">
-          {[40, 60, 45, 70, 55, 75, 68].map((height, i) => (
-            <div
-              key={i}
-              className="w-1 bg-primary/40 rounded-t"
-              style={{ height: `${height}%` }}
-            />
-          ))}
+      {/* Line 2: Horizontal Probability Bar */}
+      <div className="mb-3 relative h-12 rounded-xl overflow-hidden bg-gradient-to-r from-primary/10 to-destructive/10">
+        {/* YES side gradient */}
+        <div 
+          className="absolute left-0 top-0 h-full bg-gradient-to-r from-primary to-primary/70 transition-all duration-300"
+          style={{ width: `${yesOdds}%` }}
+        />
+        
+        {/* Percentage labels */}
+        <div className="absolute inset-0 flex items-center justify-between px-4">
+          <div className="text-sm font-bold text-white drop-shadow-md">
+            YES {yesOdds}%
+          </div>
+          <div className="text-sm font-bold text-white drop-shadow-md">
+            NO {noOdds}%
+          </div>
         </div>
       </div>
 
-      {/* Stats Row */}
-      <div className="flex items-center justify-between text-sm mb-4">
-        <div className="flex items-center gap-2 text-muted-foreground">
-          <TrendingUp className="w-4 h-4 text-primary" />
+      {/* Line 3: Meta info row */}
+      <div className="flex items-center justify-between text-xs text-muted-foreground mb-3">
+        <div className="flex items-center gap-1.5">
+          <TrendingUp className="w-3 h-3" />
           <span className="font-medium">{volume} SOL</span>
         </div>
-        <div className="flex items-center gap-2 text-muted-foreground">
-          <Clock className="w-4 h-4" />
+        <div className="flex items-center gap-1.5">
+          <Clock className="w-3 h-3" />
           <span>{endDate}</span>
         </div>
       </div>
 
-      {/* Action Buttons */}
-      <div className="grid grid-cols-2 gap-2">
-        <Button 
-          className="bg-primary hover:bg-primary/90 text-white font-medium hover-glow"
-        >
-          Trade YES
-        </Button>
-        <Button 
-          variant="outline" 
-          className="border-destructive/30 text-destructive hover:bg-destructive/10 hover:border-destructive font-medium"
-        >
-          Trade NO
-        </Button>
-      </div>
-
-      {/* Chat Icon */}
-      <div className="mt-3 pt-3 border-t border-border/50 flex items-center justify-center">
-        <Button 
-          variant="ghost" 
-          size="sm" 
-          className="text-muted-foreground hover:text-primary text-xs"
-        >
-          <MessageCircle className="w-3 h-3 mr-1" />
-          Market Chat
-        </Button>
-      </div>
+      {/* Single Trade Button */}
+      <Button 
+        className="w-full bg-primary hover:bg-primary/90 text-white font-medium hover-glow"
+      >
+        Trade
+      </Button>
     </Card>
   );
 };
