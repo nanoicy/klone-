@@ -5,7 +5,7 @@ import icyLogo from "@/assets/icy-logo.png";
 const TopBar = () => {
   return (
     <header className="fixed top-4 left-0 right-0 z-50 glass border-b border-border/50 backdrop-blur-xl shadow-sm">
-      <div className="container mx-auto px-6 h-18 flex items-center justify-between">
+      <div className="container mx-auto px-6 h-20 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-8">
           <a 
@@ -43,9 +43,9 @@ const TopBar = () => {
         </div>
 
         {/* Right Actions */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
           <Button 
-            className="hidden sm:flex items-center gap-2 bg-primary text-white hover:bg-primary/90 hover-glow"
+            className="hidden sm:flex items-center gap-2 bg-primary text-white hover:bg-primary/90 hover-glow px-6 py-2.5"
           >
             <Wallet className="w-4 h-4" />
             <span>Connect Wallet</span>
@@ -54,7 +54,7 @@ const TopBar = () => {
           <Button 
             size="icon" 
             variant="ghost"
-            className="rounded-full hover:bg-primary/10"
+            className="rounded-full hover:bg-primary/10 w-10 h-10"
           >
             <User className="w-5 h-5" />
           </Button>
