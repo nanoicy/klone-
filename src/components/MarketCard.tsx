@@ -42,16 +42,16 @@ const MarketCard = ({
       </div>
 
       {/* Line 2: Horizontal Probability Bar with solid colors */}
-      <div className="mb-3 relative h-12 rounded-xl overflow-hidden bg-gray-100">
+      <div className="mb-3 relative h-10 rounded-xl overflow-hidden bg-gray-100">
         {/* YES side - solid green */}
         <div 
-          className="absolute left-0 top-0 h-full bg-success transition-all duration-500 group-hover:shadow-[0_0_20px_rgba(0,116,88,0.3)]"
+          className="absolute left-0 top-0 h-full bg-success transition-all duration-500 group-hover:shadow-[0_0_20px_rgba(0,255,128,0.5)]"
           style={{ width: `${yesOdds}%` }}
         />
         
         {/* NO side - solid red */}
         <div 
-          className="absolute right-0 top-0 h-full bg-destructive transition-all duration-500 group-hover:shadow-[0_0_20px_rgba(222,10,38,0.3)]"
+          className="absolute right-0 top-0 h-full bg-destructive transition-all duration-500 group-hover:shadow-[0_0_20px_rgba(255,51,102,0.5)]"
           style={{ width: `${noOdds}%` }}
         />
         

@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Wallet, User } from "lucide-react";
+import icyLogo from "@/assets/icy-logo.png";
 
 const TopBar = () => {
   return (
@@ -9,10 +10,16 @@ const TopBar = () => {
         <div className="flex items-baseline gap-8">
           <a 
             href="/" 
-            className="text-xl font-semibold text-[#111111] hover:underline underline-offset-4 decoration-primary/50 smooth tracking-wide"
-            style={{ letterSpacing: '0.25px' }}
+            className="flex items-center gap-2 hover:opacity-80 smooth"
           >
-            Veritas Network
+            <img 
+              src={icyLogo} 
+              alt="icy.fun" 
+              className="w-8 h-8"
+            />
+            <span className="text-xl font-semibold text-[#111111] tracking-wide">
+              icy.fun
+            </span>
           </a>
 
           {/* Navigation Tabs */}
