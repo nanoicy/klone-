@@ -4,7 +4,7 @@ import icyLogo from "@/assets/icy-logo.png";
 
 const TopBar = () => {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 glass border-b border-border/50 backdrop-blur-xl shadow-sm">
+    <header className="fixed top-4 left-0 right-0 z-50 glass border-b border-border/50 backdrop-blur-xl shadow-sm">
       <div className="container mx-auto px-6 h-18 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-8">
