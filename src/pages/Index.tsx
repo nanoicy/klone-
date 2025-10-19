@@ -104,7 +104,7 @@ const Index = () => {
 
             {/* Load More */}
             <div className="flex justify-center pt-6">
-              <button className="px-10 py-3.5 rounded-full font-semibold text-sm smooth bg-gradient-to-r from-[#E6F8FF] to-[#DFF9F9] text-success hover:shadow-[0_8px_24px_rgba(0,116,88,0.15)] hover:-translate-y-1 border border-success/20">
+              <button className="px-10 py-3.5 rounded-full font-semibold text-sm smooth bg-primary text-white hover:bg-primary/90 hover-glow hover:-translate-y-1">
                 Load More Markets
               </button>
             </div>
