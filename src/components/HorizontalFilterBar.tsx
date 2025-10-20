@@ -21,7 +21,7 @@ const HorizontalFilterBar = () => {
     <div className="sticky top-[96px] z-40 border-b border-border/50">
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-center overflow-x-auto scrollbar-hide">
-          <div className="bg-background/80 rounded-full px-6 py-2.5 inline-flex items-center gap-6 border border-border/30">
+          <div className="rounded-full px-6 py-2.5 inline-flex items-center gap-6">
           {/* Sort Filters */}
           <div className="flex items-center gap-2">
             {sortFilters.map((filter) => (
