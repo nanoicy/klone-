@@ -2,7 +2,6 @@ import TopBar from "@/components/TopBar";
 import HorizontalFilterBar from "@/components/HorizontalFilterBar";
 import MarketCard from "@/components/MarketCard";
 import RightSidebar from "@/components/RightSidebar";
-import MetricsStrip from "@/components/MetricsStrip";
 import FloatingCreateButton from "@/components/FloatingCreateButton";
 
 const mockMarkets = [
@@ -71,9 +70,6 @@ const Index = () => {
       <HorizontalFilterBar />
       
       <main className="container mx-auto px-6 pt-6 pb-12">
-        {/* Metrics Strip */}
-        <MetricsStrip />
-
         <div className="flex gap-5 mt-8">
           {/* Main Market Feed */}
           <div className="flex-1 space-y-6">
