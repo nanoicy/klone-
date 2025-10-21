@@ -1,19 +1,20 @@
 import { Card } from "@/components/ui/card";
-import { Crown } from "lucide-react";
+import { Crown, TrendingUp, Search, Zap } from "lucide-react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { LucideIcon } from "lucide-react";
 
 const topCreators = [
-  { name: "CryptoKing", volume: "145.2K", accuracy: "87%", rank: 1, change: "+12%" },
-  { name: "MarketMaven", volume: "132.8K", accuracy: "84%", rank: 2, change: "+8%" },
-  { name: "TruthSeeker", volume: "98.5K", accuracy: "91%", rank: 3, change: "+15%" },
-  { name: "AlphaTrader", volume: "87.3K", accuracy: "79%", rank: 4, change: "-3%" },
+  { name: "CryptoKing", volume: "145.2K", accuracy: "87%", rank: 1, change: "+12%", icon: Crown },
+  { name: "MarketMaven", volume: "132.8K", accuracy: "84%", rank: 2, change: "+8%", icon: TrendingUp },
+  { name: "TruthSeeker", volume: "98.5K", accuracy: "91%", rank: 3, change: "+15%", icon: Search },
+  { name: "AlphaTrader", volume: "87.3K", accuracy: "79%", rank: 4, change: "-3%", icon: Zap },
 ];
 
 const creatorEarnings = [
-  { name: "CryptoKing", earnings: "142.3", rank: 1, medal: "🥇" },
-  { name: "MarketMaven", earnings: "119.4", rank: 2, medal: "🥈" },
-  { name: "TruthSeeker", earnings: "98.2", rank: 3, medal: "🥉" },
-  { name: "AlphaTrader", earnings: "76.5", rank: 4, medal: "" },
+  { name: "CryptoKing", earnings: "142.3", rank: 1, icon: Crown },
+  { name: "MarketMaven", earnings: "119.4", rank: 2, icon: TrendingUp },
+  { name: "TruthSeeker", earnings: "98.2", rank: 3, icon: Search },
+  { name: "AlphaTrader", earnings: "76.5", rank: 4, icon: Zap },
 ];
 
 const RightSidebar = () => {
@@ -34,7 +35,7 @@ const RightSidebar = () => {
               <div className="relative">
                 <Avatar className="w-9 h-9 ring-2 ring-primary/30 ring-offset-2 ring-offset-background">
                   <AvatarFallback className="bg-gradient-to-br from-primary to-primary-glow text-white text-xs font-semibold">
-                    {creator.name.substring(0, 2)}
+                    <creator.icon className="w-4 h-4" />
                   </AvatarFallback>
                 </Avatar>
                 {creator.rank === 1 && (
@@ -83,10 +84,12 @@ const RightSidebar = () => {
               key={creator.rank}
               className="flex items-center gap-3 p-3 rounded-xl hover:bg-accent/30 smooth"
             >
-              <div className="text-2xl">{creator.medal || "•"}</div>
+              <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+                <span className="text-sm font-bold text-primary">{creator.rank}</span>
+              </div>
               <Avatar className="w-9 h-9 ring-2 ring-primary/30 ring-offset-2 ring-offset-background">
                 <AvatarFallback className="bg-gradient-to-br from-primary to-primary-glow text-white text-xs font-semibold">
-                  {creator.name.substring(0, 2)}
+                  <creator.icon className="w-4 h-4" />
                 </AvatarFallback>
               </Avatar>
               <div className="flex-1 min-w-0">
