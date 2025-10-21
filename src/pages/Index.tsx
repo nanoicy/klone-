@@ -69,8 +69,8 @@ const Index = () => {
       <TopBar />
       <HorizontalFilterBar />
       
-      <main className="container mx-auto px-6 pt-6 pb-12">
-        <div className="flex gap-5 mt-8">
+      <main className="container mx-auto px-6 pt-32 pb-12">
+        <div className="flex gap-5">
           {/* Main Market Feed */}
           <div className="flex-1 space-y-6">
             {/* Hero Section */}
