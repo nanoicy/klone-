@@ -4,17 +4,17 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { LucideIcon } from "lucide-react";
 
 const topCreators = [
-  { name: "CryptoKing", volume: "145.2K", accuracy: "87%", rank: 1, change: "+12%", icon: Crown },
-  { name: "MarketMaven", volume: "132.8K", accuracy: "84%", rank: 2, change: "+8%", icon: TrendingUp },
-  { name: "TruthSeeker", volume: "98.5K", accuracy: "91%", rank: 3, change: "+15%", icon: Search },
-  { name: "AlphaTrader", volume: "87.3K", accuracy: "79%", rank: 4, change: "-3%", icon: Zap },
+  { name: "CryptoKing", volume: "145.2K", accuracy: "87%", rank: 1, change: "+12%", icon: Crown, gradient: "from-yellow-500 to-orange-500" },
+  { name: "MarketMaven", volume: "132.8K", accuracy: "84%", rank: 2, change: "+8%", icon: TrendingUp, gradient: "from-blue-500 to-cyan-500" },
+  { name: "TruthSeeker", volume: "98.5K", accuracy: "91%", rank: 3, change: "+15%", icon: Search, gradient: "from-purple-500 to-pink-500" },
+  { name: "AlphaTrader", volume: "87.3K", accuracy: "79%", rank: 4, change: "-3%", icon: Zap, gradient: "from-green-500 to-emerald-500" },
 ];
 
 const creatorEarnings = [
-  { name: "CryptoKing", earnings: "142.3", rank: 1, icon: Crown },
-  { name: "MarketMaven", earnings: "119.4", rank: 2, icon: TrendingUp },
-  { name: "TruthSeeker", earnings: "98.2", rank: 3, icon: Search },
-  { name: "AlphaTrader", earnings: "76.5", rank: 4, icon: Zap },
+  { name: "CryptoKing", earnings: "142.3", rank: 1, icon: Crown, gradient: "from-yellow-500 to-orange-500" },
+  { name: "MarketMaven", earnings: "119.4", rank: 2, icon: TrendingUp, gradient: "from-blue-500 to-cyan-500" },
+  { name: "TruthSeeker", earnings: "98.2", rank: 3, icon: Search, gradient: "from-purple-500 to-pink-500" },
+  { name: "AlphaTrader", earnings: "76.5", rank: 4, icon: Zap, gradient: "from-green-500 to-emerald-500" },
 ];
 
 const RightSidebar = () => {
@@ -34,7 +34,7 @@ const RightSidebar = () => {
             >
               <div className="relative">
                 <Avatar className="w-9 h-9 ring-2 ring-primary/30 ring-offset-2 ring-offset-background">
-                  <AvatarFallback className="bg-gradient-to-br from-primary to-primary-glow text-white text-xs font-semibold">
+                  <AvatarFallback className={`bg-gradient-to-br ${creator.gradient} text-white text-xs font-semibold`}>
                     <creator.icon className="w-4 h-4" />
                   </AvatarFallback>
                 </Avatar>
@@ -88,7 +88,7 @@ const RightSidebar = () => {
                 <span className="text-sm font-bold text-primary">{creator.rank}</span>
               </div>
               <Avatar className="w-9 h-9 ring-2 ring-primary/30 ring-offset-2 ring-offset-background">
-                <AvatarFallback className="bg-gradient-to-br from-primary to-primary-glow text-white text-xs font-semibold">
+                <AvatarFallback className={`bg-gradient-to-br ${creator.gradient} text-white text-xs font-semibold`}>
                   <creator.icon className="w-4 h-4" />
                 </AvatarFallback>
               </Avatar>
