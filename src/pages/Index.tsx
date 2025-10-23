@@ -85,7 +85,7 @@ const Index = () => {
                 <button className="px-4 py-2 bg-primary text-white rounded-xl font-semibold hover-glow smooth hover:-translate-y-0.5 text-sm">
                   Create Market
                 </button>
-                <a href="#" className="text-xs text-muted-foreground hover:text-primary smooth underline-offset-4 hover:underline">
+                <a href="https://icy.fun/docs" target="_blank" rel="noopener noreferrer" className="text-xs text-muted-foreground hover:text-primary smooth underline-offset-4 hover:underline">
                   How it Works
                 </a>
               </div>
